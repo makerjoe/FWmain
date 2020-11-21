@@ -1,4 +1,4 @@
-var cacheName = 'qaz-pwa';
+var cacheName = 'FW7 PWA';
 var filesToCache = [
   '/',
   '/index.html',
