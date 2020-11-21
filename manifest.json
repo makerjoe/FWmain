@@ -1,7 +1,7 @@
 {
-  "name": "MJapp",
-  "short_name": "MJapp",
-  "description": "MJapp",
+  "name": "FW7 PWA",
+  "short_name": "FW7 PWA",
+  "description": "FW7 PWA",
   "lang": "en-US",
   "start_url": "/index.html",
   "display": "standalone",
