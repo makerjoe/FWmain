@@ -1,7 +1,7 @@
 {
-  "name": "FW7 PWA",
-  "short_name": "FW7 PWA",
-  "description": "FW7 PWA",
+  "name": "FW7PWA",
+  "short_name": "FW7PWA",
+  "description": "FW PWA",
   "lang": "en-US",
   "start_url": "/index.html",
   "display": "standalone",
