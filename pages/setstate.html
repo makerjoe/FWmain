@@ -1,0 +1,186 @@
+
+<template>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="title">SetState</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <!-- Show user list when it is loaded -->
+			<button @click="newrec" class="col button button-fill">Add New</button>
+			<button @click="newrec1" class="col button button-fill">Add New1</button>
+
+      <div class="list simple-list">
+        <ul>
+					{{#each user}}
+						<li>
+							<a href="#" @click="openform({{@index}})" >
+								{{@index}}. {{first_name}} {{last_name}} {{email}} {{json_stringify this}}
+							</a>
+						</li>
+					{{/each}}
+        </ul>
+      </div>
+    </div>
+		
+				<div class="w3-container">
+
+          <div id="id01" class="w3-modal w3-animate-opacity">
+            <div class="w3-modal-content w3-card-4">
+              <header class="w3-container w3-teal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+                <h2>Modal Header</h2>
+              </header>
+              <div class="w3-container">
+                <p>Some text.. </p>
+                <form class="list" id="my-form">
+                  <ul>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">ID</div>
+                          <div class="item-input-wrap">
+                            <input type="number" name="id" placeholder="ID" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+      
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">FirstName</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="first_name" placeholder="Your name">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">LastName</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="last_name" placeholder="Your name">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">E-mail</div>
+                          <div class="item-input-wrap">
+                            <input type="email" name="email" placeholder="E-mail">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Gender</div>
+                          <div class="item-input-wrap">
+                            <select name="gender">
+                              <option value="male" selected>Male</option>
+                              <option value="female">Female</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>  
+                </form>
+
+                <p>Some text..</p>
+                <span class="button" @click="saveform">Save Record</span>
+<!--                 
+						<span class="button" @click="removerec">Remove Record</span>
+ -->
+              </div>
+              <footer class="w3-container w3-teal">
+                <p>Modal Footer</p>
+              </footer>
+            </div>
+          </div>
+        </div>
+		
+  </div>
+</template>
+<script>
+  return {
+    data() {
+      return {
+        // empty initial user data
+        user: bulkdata
+      }
+    },
+		// Component Methods
+    methods: {
+      newrec: function() {
+					var self = this;					
+							var userx = {
+							first_name:'makerjoe',
+							last_name:'framework7',
+							}
+						bulkdata1.unshift(userx)
+          self.$setState({
+            user : bulkdata1,
+          });
+      },
+      newrec1: function() {
+					var self = this;
+							var userx = {
+							first_name:'joseluis',
+							last_name:'hrydziuszko',
+							}
+						bulkdata1.shift()		
+          self.$setState({
+            user : bulkdata1,
+          });
+      },  
+			
+			saveform: function() {
+			
+			//----------------------------------------------------
+			function replaceById(requests, request) {
+						var index = _.findIndex(requests, function(r) { 
+						return r.id === request.id 
+					});
+					requests.splice(index, 1, request);
+					}
+			//----------------------------------------------------
+
+					var self = this;					
+					var formData = app.form.convertToData('#my-form');
+					console.log(formData)
+formData.id=Number(formData.id)
+					//var requests = [{id: 1, msg: 'cool'}, {id: 2, msg: 'wow'}];
+					var requests = bulkdata;
+					replaceById(requests, formData);
+					console.log(requests);
+					
+					//mergedrec = _.merge(bulkdata1,formData);
+					//console.log(mergedrec)
+          self.$setState({
+            user : requests,
+          });
+			},
+			openform: function(index) {
+					var self = this;
+					console.log(this.user[index])
+					record=this.user[index]
+					app.form.fillFromData('#my-form', record);
+					document.getElementById('id01').style.display = 'block';
+					
+					//mergedrec = _.merge(context, );
+					//context = _.merge(bulkdata1, pomo);
+					//record1=JSON.stringify(record)
+					//app.dialog.alert(record1);
+					//console.log(record)
+					//replaceById(bulkdata1,{id:1, first_name:'joseluis',last_name:'hrydziuszko'})					self.$setState({
+      },
+    },
+  };
+</script>

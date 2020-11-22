@@ -1,0 +1,402 @@
+<template>
+   <div class="page" data-name="form2v">
+      <div class="navbar">
+         <div class="navbar-inner sliding">
+            <div class="left">
+               <a href="#" class="link back">
+               <i class="icon icon-back"></i>
+               <span class="ios-only">Back</span>
+               </a>
+            </div>
+            <div class="title">FormV2</div>
+         </div>
+      </div>
+      <div class="page-content">
+         <div class="block-title">About My App</div>
+         <div class="block block-strong">
+            <div class="block">
+               <div class="row">
+                  <button class="col button button-fill">Button</button>
+                  <button class="col button button-fill">Button</button>
+                  <button class="col button button-fill button-round">Round</button>
+               </div>
+            </div>
+            <a @click="openAlert">Open Alert</a>
+						
+<div class="w3-container">
+  <h2>W3.CSS Animated Modal</h2>
+
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Fade In Modal</button>
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>Modal Header</h2>
+      </header>
+      <div class="w3-container">
+        <p>Some text..</p>
+				            <form class="list" id="my-form">
+               <ul>                  
+									<li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">ID</div>
+                           <div class="item-input-wrap">
+                              <input type="text" name="_id" placeholder="ID" readonly>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+
+										<li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">rev</div>
+                           <div class="item-input-wrap">
+                              <input type="text" name="_rev" placeholder="REV" readonly>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+						 
+                  <li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">Name</div>
+                           <div class="item-input-wrap">
+                              <input type="text" name="name" placeholder="Your name">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">E-mail</div>
+                           <div class="item-input-wrap">
+                              <input type="email" name="email" placeholder="E-mail">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">Gender</div>
+                           <div class="item-input-wrap">
+                              <select name="gender">
+                                 <option value="male" selected>Male</option>
+                                 <option value="female">Female</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content">
+                        <div class="item-inner">
+                           <div class="item-title">Toggle</div>
+                           <div class="item-after">
+                              <label class="toggle toggle-init">
+                              <input type="checkbox" name="toggle" value="yes"><i class="toggle-icon"></i>
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </form>
+
+        <p>Some text..</p>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
+    </div>
+  </div>
+</div>						
+						<!-- Each "cells" row should be wrapped with div class="row" -->
+<div class="row">
+    <!-- Each "cell" has col-[widht in percents] class -->
+     <div class="col-50">
+            <div id="popx" class="list links-list">
+               <ul>
+                  <li class="item-content item-link" v-for="(vitem, index) in vitems">
+                     <a v-on:click="openAlert1(vitem.doc)"> 
+                      {vitem.doc.name}    {vitem.doc.gender}
+                     </a>
+					 <span class="button" v-on:click="removerec(vitem.doc)">X</span>
+					 <span class="button" v-on:click="updaterec(vitem.doc)">U</span>
+                  </li>
+               </ul>
+            </div>
+						</div>
+						
+						
+   <div class="col-50">
+            <form class="list" id="my-form1">
+               <ul>                  
+									<li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">ID</div>
+                           <div class="item-input-wrap">
+                              <input type="text" name="_id" placeholder="ID" readonly>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+
+										<li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">rev</div>
+                           <div class="item-input-wrap">
+                              <input type="text" name="_rev" placeholder="REV" readonly>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+						 
+                  <li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">Name</div>
+                           <div class="item-input-wrap">
+                              <input type="text" name="name" placeholder="Your name">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">E-mail</div>
+                           <div class="item-input-wrap">
+                              <input type="email" name="email" placeholder="E-mail">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content item-input">
+                        <div class="item-inner">
+                           <div class="item-title item-label">Gender</div>
+                           <div class="item-input-wrap">
+                              <select name="gender">
+                                 <option value="male" selected>Male</option>
+                                 <option value="female">Female</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content">
+                        <div class="item-inner">
+                           <div class="item-title">Toggle</div>
+                           <div class="item-after">
+                              <label class="toggle toggle-init">
+                              <input type="checkbox" name="toggle" value="yes"><i class="toggle-icon"></i>
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </form>
+            <div class="block block-strong row">
+               <div class="col"><a class="button save-form-to-data" href="#">Save Data</a></div>
+               <div class="col"><a class="button convert-form-to-data" href="#">Get Data</a></div>
+               <div class="col"><a class="button fill-form-from-data" href="#">Fill Form</a></div>
+            </div>		
+						</div>
+
+</div>
+
+            <p>{{name}}  {apphome} xFugiat perspiciatis excepturi, soluta quod non ullam deleniti. Nobis sint nemo consequuntur, fugiat. Eius perferendis animi autem incidunt vel quod tenetur nostrum, voluptate omnis quasi quidem illum consequuntur, a, quisquam.</p>
+            <p>Laudantium neque magnam vitae nemo quam commodi, in cum dolore obcaecati laborum, excepturi harum, optio qui, consequuntur? Obcaecati dolor sequi nesciunt culpa quia perspiciatis, reiciendis ex debitis, ut tenetur alias.</p>
+         </div>
+         <div class="block">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni molestiae laudantium dignissimos est nobis delectus nemo ea alias voluptatum architecto, amet similique, saepe iste consectetur in repellat ut minus quibusdam!</p>
+            <p>Molestias et distinctio porro nesciunt ratione similique, magni doloribus, rerum nobis, aliquam quae reiciendis quasi modi. Nam a recusandae, fugiat in ea voluptates fuga eius, velit corrupti reprehenderit dignissimos consequatur!</p>
+            <p>Blanditiis, cumque quo adipisci. Molestiae, dolores dolorum quos doloremque ipsa ullam eligendi commodi deserunt doloribus inventore magni? Ea mollitia veniam nostrum nihil, iusto doloribus a at! Ea molestiae ullam delectus!</p>
+         </div>
+      </div>
+   </div>
+</template>
+<script>
+    return {
+        methods: {
+            openAlert: function() {
+                var self = this;
+                self.$app.dialog.alert('Hello World');
+            },
+        },
+        on: {
+            pageInit: function(e, page) {
+                console.log('pageMounted', page);
+
+                var $$ = Dom7;
+
+                $$('.convert-form-to-data').on('click', function() {
+                    var formData = app.form.convertToData('#my-form');
+                    alert(JSON.stringify(formData));
+                    alert(formData.name);
+                    //db.put(formData);
+
+                });
+
+                $$('.fill-form-from-data').on('click', function() {
+                    var formData = {
+                        _id: new Date().toISOString(),
+                        'name': 'John',
+                        'email': 'john@doe.com',
+                        'gender': 'female',
+                        'toggle': ['yes'],
+
+                    }
+                    app.form.fillFromData('#my-form', formData);
+
+                    db.put(formData).then(function(response) {
+                        console.log(response)
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
+                });
+
+                $$('.save-form-to-data').on('click', function() {
+                    var formData = app.form.convertToData('#my-form');
+                    alert(JSON.stringify(formData));
+                    alert(formData.name);
+                    if (!formData._id) {
+                        formData._id = new Date().toISOString();
+                        console.log(formData._id)
+                    }
+                    db.put(formData).then(function(response) {
+                        console.log(response)
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
+
+                });
+
+                <!-- function update(index){ -->
+                <!-- db.get(index).then(function(d){ -->
+                <!-- formData._id=new Date().toISOString();; -->
+                <!-- return db.put(formData); -->
+                <!-- }).catch(function(e){ -->
+                <!-- console.log(e); -->
+                <!-- update(); -->
+                <!-- }); -->
+                <!-- }   -->
+								function resetform() {
+													document.getElementById("my-form").reset();
+													}
+													
+                var vm = new Vue({
+                    delimiters: ['{', '}'],
+                    el: '#popx',
+                    data: function() {
+                        return {
+                            vitems: [] //inject root instance        
+                        }
+                    },
+                    methods: {
+                        openAlert1: function(index) {
+                            console.log(index)
+                            app.form.fillFromData('#my-form', index);
+														document.getElementById('id01').style.display='block';
+                        },
+                        removerec: function(index) {
+                            console.log(index)
+                            db.remove(index);
+                        },
+                        updaterec: function(index) {
+                            var formData = app.form.convertToData('#my-form');
+														index = formData;
+														//index.name = formData.name;
+                            //index.email = formData.email;
+														//index._rev = formData._rev;
+														alert(JSON.stringify(formData));
+														alert(JSON.stringify(index));
+                            db.put(index);
+														resetform()
+                       }
+                    }
+                });
+
+                db.changes({
+                    since: 'now',
+                    live: true,
+                    retry: true,
+                    continuous: true
+                }).on('change', showTodos);
+
+                // We have to create a new todo document and enter it in the database
+                function addTodo(text) {
+                    var todo = {
+                        _id: new Date().toISOString(),
+                        title: 'softhryd',
+                        completed: false
+                    };
+                }
+
+                function sync() {
+                    //syncDom.setAttribute('data-sync-state', 'syncing');
+
+                    // fully sync two databases
+                    // db.fullySync(remoteCouch);
+                    // fully replicate to another database
+                    // db.fullyReplicateTo(remoteCouch);
+                    // fully replicate from another database
+                    // db.fullyReplicateFrom(remoteCouch);
+
+                    var opts = {
+                        live: true,
+                        retry: true
+                    };
+                    db.replicate.to(remoteCouch, opts, syncError);
+                    db.replicate.from(remoteCouch, opts, syncError);
+                }
+                // There was some form or error syncing
+                function syncError() {
+                    console.log('error')
+                    //syncDom.setAttribute('data-sync-state', 'error');
+                }
+                //var dbx = showTodos()
+                // Show the current list of todos by reading them from the database
+
+                function showTodos() {
+                    db.allDocs({
+                        include_docs: true,
+                        descending: true
+                    }, function(err, doc) {
+                        //{vitems:doc.rows}
+
+                        vm.vitems = doc.rows
+
+                        //pomo(doc.rows);
+                        console.log(doc.rows[0].doc.title)
+                        // console.log(doc.rows)
+                        // console.log(doc.rows)
+                    });
+                }
+
+                function pomo(todos) {
+                    {
+                        vitems: todos
+                    }
+                }
+
+                showTodos()
+
+                if (remoteCouch) {
+                    //sync();
+                }
+            },
+        }
+    }
+</script>

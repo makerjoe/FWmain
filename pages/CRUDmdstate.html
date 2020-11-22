@@ -1,0 +1,657 @@
+<template>
+  <div class="page" data-name="formMD">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
+        </div>
+        <div class="title">FormV2 {{listado}}{{$app.version}}{{$root.user.lastName}}</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block-title">About My App F7 : {{$app.version}} {{listado}}</div>
+      <div class="block block-strong">
+        <div class="block">
+          <div class="row">
+            <button @click="newrec" class="col button button-fill">Add New</button>
+            <button @click="findrecs" class="col button button-fill">Search</button>
+            <button @click="createidx" class="col button button-fill">IDX</button>
+            <button @click="bulkrecs" class="col button button-fill button-round">Bulk</button>
+            <button @click="loadrecs" class="col button button-fill button-round">Load</button>
+            <button @click="deletedb" class="col button button-fill button-round">DeleteDB</button>
+            <button @click="createdb" class="col button button-fill button-round">CreateDB</button>
+            <button @click="$root.helloWorld" id="bnw" class="col button button-fill button-round color-red">HW</button>
+          </div>
+        </div>
+        <a @click="openAlert('testing Open dialog')">Open Alert</a>
+        <button class="col button search">search</button>
+        <div class="w3-container">
+
+          <div id="id01" class="w3-modal w3-animate-opacity">
+            <div class="w3-modal-content w3-card-4 " style="width:100%">
+              <header class="w3-container w3-teal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+                <h2>Modal Header</h2>
+              </header>
+              <div class="w3-container">
+                <h1>{{listado}}</h1>
+                <p>Some text..</p>
+                <span class="button" @click="removerec">Remove Record</span>
+                <span class="button" @click="updaterec({{@index}})">Save Record</span>
+
+                <footer class="w3-container w3-teal">
+                  <p>Modal Footer</p>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <!-- Each "cells" row should be wrapped with div class="row" -->
+          <div class="row">
+            <!-- Each "cell" has col-[widht in percents] class -->
+            <div class="col-100">
+
+              <div class="list simple-list">
+                <ul>
+                  {{#each vitems}}
+                  <li>
+                    /* <a data-reload-detail="true" href="/master-detail/{{@index}}/">        */
+                  <a href="#" @click="openPopup({{@index}})">       
+								{{@index}}. {{first_name}} {{last_name}} {{email}} {{json_stringify this}}</a>
+                  </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <p>{{name}} {{apphome}} Fugiat perspiciatis excepturi, soluta quod non ullam deleniti. Nobis sint nemo consequuntur, fugiat. Eius perferendis animi autem incidunt vel quod tenetur nostrum, voluptate omnis quasi quidem illum consequuntur, a, quisquam.</p>
+          <p>Laudantium neque magnam vitae nemo quam commodi, in cum dolore obcaecati laborum, excepturi harum, optio qui, consequuntur? Obcaecati dolor sequi nesciunt culpa quia perspiciatis, reiciendis ex debitis, ut tenetur alias.</p>
+        </div>
+        <div class="block">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni molestiae laudantium dignissimos est nobis delectus nemo ea alias voluptatum architecto, amet similique, saepe iste consectetur in repellat ut minus quibusdam!</p>
+          <p>Molestias et distinctio porro nesciunt ratione similique, magni doloribus, rerum nobis, aliquam quae reiciendis quasi modi. Nam a recusandae, fugiat in ea voluptates fuga eius, velit corrupti reprehenderit dignissimos consequatur!</p>
+          <p>Blanditiis, cumque quo adipisci. Molestiae, dolores dolorum quos doloremque ipsa ullam eligendi commodi deserunt doloribus inventore magni? Ea mollitia veniam nostrum nihil, iusto doloribus a at! Ea molestiae ullam delectus!</p>
+        </div>
+      </div>
+      
+      
+      <div class="popup demo-popup">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Popup Title</div>
+              <div class="right"><a href="#" class="link popup-close">Close</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+                <form class="list" id="my-form">
+                  <ul>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">ID</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="_id" placeholder="ID" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">rev</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="_rev" placeholder="REV" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Montos</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="montosx" placeholder="Montos">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+<!--                     <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">FechaINI</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="fechaini" placeholder="Montos">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+ -->                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">FirstName</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="first_name" placeholder="Your name">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">LastName</div>
+                          <div class="item-input-wrap">
+                            <input type="text" name="last_name" placeholder="Your name">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">E-mail</div>
+                          <div class="item-input-wrap">
+                            <input type="email" name="email" placeholder="E-mail">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">FiniAno</div>
+                          <div class="item-input-wrap">
+                            <input type="email" name="finiano" placeholder="E-mail">
+													</div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">FiniMes</div>
+                          <div class="item-input-wrap">
+                            <input type="email" name="finimes" placeholder="E-mail">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">FiniDia</div>
+                          <div class="item-input-wrap">
+                            <input type="email" name="finidia" placeholder="E-mail">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Gender</div>
+                          <div class="item-input-wrap">
+                            <select name="gender">
+                              <option value="male" selected>Male</option>
+                              <option value="female">Female</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Toggle</div>
+                          <div class="item-after">
+                            <label class="toggle toggle-init">
+                              <input type="checkbox" name="toggle" value="yes"><i class="toggle-icon"></i>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <p id='formarrx'></p>
+                </form>
+
+                <p>Some text..</p>
+                <span class="button" @click="removerec">Remove Record</span>
+                <span class="button" @click="updaterec({{@index}})">Save Record</span>
+                
+              <p class="">Here comes popup. You can put here anything, even independent view with its own navigation. Also not, that by default popup looks a bit different on iPhone/iPod and iPad, on iPhone it is fullscreen.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus mauris leo, eu bibendum neque congue non. Ut leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus, viverra ipsum pulvinar, molestie arcu. Etiam lacinia venenatis dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu et eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare consequat nunc viverra pellentesque. Aenean semper eu massa sit amet aliquam. Integer et neque sed libero mollis elementum at vitae ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a faucibus lectus.</p>
+              <p>Duis ut mauris sollicitudin, venenatis nisi sed, luctus ligula. Phasellus blandit nisl ut lorem semper pharetra. Nullam tortor nibh, suscipit in consequat vel, feugiat sed quam. Nam risus libero, auctor vel tristique ac, malesuada ut ante. Sed molestie, est in eleifend sagittis, leo tortor ullamcorper erat, at vulputate eros sapien nec libero. Mauris dapibus laoreet nibh quis bibendum. Fusce dolor sem, suscipit in iaculis id, pharetra at urna. Pellentesque tempor congue massa quis faucibus. Vestibulum nunc eros, convallis blandit dui sit amet, gravida adipiscing libero.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    // Component Data
+    data: function() {
+      // Must return an object
+      return {
+        vitems: [],
+        listado: 'Datos de Inquilino',
+      }
+    },
+    methods: {
+    
+      openPopup: function(index) {
+        var self = this;
+        //debugger;
+        //console.log(this.vitems[index])
+        record = this.vitems[index]
+
+        function textBoxCreate(d) {
+
+          output = '';
+          output += '<div class="card data-table  data-table-init">'
+          output += '<div class="card-content">'
+          output += '<table>'
+          output += '<thead>'
+          output += '<tr>'
+          output += '<th class="label-cell">Year</th>'
+          output += '<th class="numeric-cell">Month</th>'
+          output += '<th class="numeric-cell">ALQS</th>'
+          output += '<th class="numeric-cell">AYSS</th>'
+          output += '<th class="numeric-cell">ABLS</th>'
+          output += '<th class="numeric-cell">HONS</th>'
+          output += '<th class="numeric-cell">IMBS</th>'
+          output += '<th class="numeric-cell">FIXS</th>'
+          output += '</tr>'
+          output += '</thead>'
+
+
+
+          output += '<tbody>'
+
+          for (ii = 0; ii < 24; ++ii) {
+            mes = textomes[d.getMonth()]
+
+            output += '<tr>'
+            output += '<td class="label-cell">'
+            output += d.getFullYear() + '/' + (d.getMonth() + 1)
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '  ' + mes + '/' + ii
+            output += '</td>'
+
+            d.setMonth(d.getMonth() + 1);
+
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="alq' + ii + '" placeholder="ALQS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="ays' + ii + '" placeholder="AYSS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="abl' + ii + '" placeholder="ABLS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="hon' + ii + '" placeholder="HONS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="imb' + ii + '" placeholder="IMBS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="fix' + ii + '" placeholder="FIXS">'
+            output += '</td>'
+            output += '</tr>'
+          }
+          output += '</tbody>'
+          output += '</table>'
+          output += '</div>'
+          output += '</div>'
+        }
+
+        //alert(JSON.stringify(index));
+        //recindex = index
+        //fini = record.fechaini;
+
+        finiano = record.finiano;
+        finimes = record.finimes;
+        finidia = record.finidia;
+        fini = finiano + ',' + finimes + ',' + finidia
+          <!-- var str = fini; -->
+          <!-- var ano = str.substring(0, 4); -->
+          <!-- var mes = str.substring(5, 7); -->
+          <!-- var dia = str.substring(8, 10); -->
+        console.log(record)
+          //console.log(index.montosx)
+          //index.montosx = index.montos.alq[23]
+          //console.log(index.montosx)
+
+        var d = new Date(fini); //ymd julio (7) = 6
+        textBoxCreate(d)
+        document.getElementById('formarrx').innerHTML = output;
+        app.form.fillFromData('#my-form', record);
+          // Create dynamic Popup
+        var dynamicPopup = app.popup.create({
+          el: '.demo-popup',
+          // Events
+          on: {
+            open: function(popup) {
+              console.log(popup);
+              //document.getElementById('formarrx').innerHTML = '{{xxx}}'+'ttt';
+            },
+            opened: function(popup) {
+              console.log('Popup opened');
+            },
+          }
+        });
+        
+        dynamicPopup.open();
+      },
+
+
+
+      openAlert: function(xxx) {
+        //debugger;
+        var self = this;
+        //app.dialog.alert(xxx);
+        self.$app.dialog.alert(app.version);
+        self.$setState({
+          listado: 'changing state',
+        })
+      },
+
+      openAlert2: function(xxx) {
+        var self = this;
+        db.compact().then(function(info) {
+          self.$app.dialog.alert(xxx);
+          // compaction complete
+        }).catch(function(err) {
+          // handle errors
+        });
+      },
+      openform: function(index) {
+        var self = this;
+        //debugger;
+        console.log(this.vitems[index])
+        record = this.vitems[index]
+
+        function textBoxCreate(d) {
+
+          output = '';
+          output += '<div class="card data-table  data-table-init">'
+          output += '<div class="card-content">'
+          output += '<table>'
+          output += '<thead>'
+          output += '<tr>'
+          output += '<th class="label-cell">Year</th>'
+          output += '<th class="numeric-cell">Month</th>'
+          output += '<th class="numeric-cell">ALQS</th>'
+          output += '<th class="numeric-cell">AYSS</th>'
+          output += '<th class="numeric-cell">ABLS</th>'
+          output += '<th class="numeric-cell">HONS</th>'
+          output += '<th class="numeric-cell">IMBS</th>'
+          output += '<th class="numeric-cell">FIXS</th>'
+          output += '</tr>'
+          output += '</thead>'
+
+
+
+          output += '<tbody>'
+
+          for (ii = 0; ii < 24; ++ii) {
+            mes = textomes[d.getMonth()]
+
+            output += '<tr>'
+            output += '<td class="label-cell">'
+            output += d.getFullYear() + '/' + (d.getMonth() + 1)
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '  ' + mes + '/' + ii
+            output += '</td>'
+
+            d.setMonth(d.getMonth() + 1);
+
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="alq' + ii + '" placeholder="ALQS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="ays' + ii + '" placeholder="AYSS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="abl' + ii + '" placeholder="ABLS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="hon' + ii + '" placeholder="HONS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="imb' + ii + '" placeholder="IMBS">'
+            output += '</td>'
+            output += '<td class="numeric-cell">'
+            output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="fix' + ii + '" placeholder="FIXS">'
+            output += '</td>'
+            output += '</tr>'
+          }
+          output += '</tbody>'
+          output += '</table>'
+          output += '</div>'
+          output += '</div>'
+        }
+
+        //alert(JSON.stringify(index));
+        //recindex = index
+        //fini = record.fechaini;
+
+        finiano = record.finiano;
+        finimes = record.finimes;
+        finidia = record.finidia;
+        fini = finiano + ',' + finimes + ',' + finidia
+          <!-- var str = fini; -->
+          <!-- var ano = str.substring(0, 4); -->
+          <!-- var mes = str.substring(5, 7); -->
+          <!-- var dia = str.substring(8, 10); -->
+        console.log(record)
+          //console.log(index.montosx)
+          //index.montosx = index.montos.alq[23]
+          //console.log(index.montosx)
+
+        var d = new Date(fini); //ymd julio (7) = 6
+
+        console.log(fini)
+        console.log(d)
+          //console.log(fini[0])
+          //console.log(fini[1])
+          //console.log(fini[2])
+          //
+        textBoxCreate(d)
+        document.getElementById('formarr').innerHTML = output;
+
+        app.form.fillFromData('#my-form', record);
+        document.getElementById('id01').style.display = 'block';
+
+      },
+      updaterec: function(index) {
+        var self = this;
+        recindex = this.vitems[index]
+        var formData = app.form.convertToData('#my-form');
+        alert(JSON.stringify(formData));
+        var index = _.merge(recindex, formData);
+        console.log(index)
+        db.put(index);
+        self.showTodos()
+        document.getElementById('id01').style.display = 'none'
+      },
+
+      removerec: function() {
+        var formData = app.form.convertToData('#my-form');
+        index = formData;
+        var self = this;
+        self.$app.dialog.alert(JSON.stringify(index));
+        db.remove(index);
+        self.showTodos();
+        document.getElementById('id01').style.display = 'none'
+      },
+
+      newrec: function() {
+        document.getElementById("my-form").reset();
+        var formData = {
+          _id: new Date().toISOString(),
+        }
+        app.form.fillFromData('#my-form', formData);
+        document.getElementById('id01').style.display = 'block'
+      },
+
+      bulkrecs: function() {
+        db.bulkDocs(alqsdata).then(function(result) {
+          // handle result
+        }).catch(function(err) {
+          console.log(err);
+        });
+      },
+
+
+      loadrecs: function() {
+        var db = new PouchDB('alqs');
+        db.load('/dump.txt').then(function() {
+          // done loading!
+        }).catch(function(err) {
+          // HTTP error or something like that
+        });
+      },
+
+      createdb: function() {
+        db = new PouchDB('alqs', {
+          auto_compaction: true
+        });
+        console.log('database created')
+      },
+
+      deletedb: function() {
+        db.destroy().then(function() {
+          console.log('database destroyed')
+        }).catch(function(err) {
+          console.log('database ERROR Sdestroyed')
+        })
+      },
+
+      showTodos: function() {
+        console.log('OUT showtodos')
+        var self = this;
+
+        db.find({
+            selector: {
+              $and: [{
+                  last_name: {
+                    '$gt': null
+                  }
+                }, // tip for sorting fiels
+                {
+                  last_name: {
+                    $regex: "^" + searchkey
+                  }
+                } // tip for match PI* like
+              ]
+            },
+            //fields: ['_id', 'first_name', 'last_name','email'],
+            sort: ['last_name']
+          })
+          .then(function(doc) {
+            vitems = doc.docs
+            var arrx = doc.docs
+            mesx = "11"
+            for (var i = 0; i < arrx.length; i++) {
+              console.log("array index: " + i);
+              var obj = arrx[i];
+              for (var key in obj) {
+                var value = obj[key];
+                if (key == "alq" + mesx) {
+                  console.log(key + ": " + value);
+                }
+                if (key == "abl" + mesx) {
+                  console.log(key + ": " + value);
+                }
+              }
+            } // very important vue like render in f7
+            self.$setState({
+              vitems: doc.docs,
+            })
+          })
+          .catch(function(err) {
+            console.log(err)
+          });
+      },
+
+      createidx: function() {
+        db.createIndex({
+          index: {
+            fields: ['last_name']
+          }
+        }).then(function(result) {
+          console.log(result);
+        }).catch(function(err) {
+          console.log(err);
+        });
+      },
+
+      findrecs: function() {
+        var self = this;
+        //self.openAlert()
+        console.log('***************');
+        searchkey = "Angel"
+        self.showTodos()
+
+      },   
+      
+      findrec: function() {
+        var self = this;
+        //self.openAlert()
+        console.log('***************');
+        searchkey = ""
+        self.showTodos()
+
+      },
+    },
+
+
+    //////////////////////////////////////////////////////////////
+    /////////defined functions per page //////////////////////////
+    //////////////////////////////////////////////////////////////
+    on: {
+      pageInit: function(e, page) {
+        console.log('pageMounted', page.name);
+        var $$ = Dom7;
+
+        function sync() {
+
+            var opts = {
+              live: true,
+              retry: true
+            };
+            db.replicate.to(remoteCouch, opts, syncError);
+            db.replicate.from(remoteCouch, opts, syncError);
+          }
+          // There was some form or error syncing
+        function syncError() {
+          console.log('error')
+            //syncDom.setAttribute('data-sync-state', 'error');
+        }
+
+        if (remoteCouch) {
+          //sync();
+        }
+        // navbar link tooltip
+        var navbarTooltip = app.tooltip.create({
+          targetEl: '#bnw',
+          text: 'One more tooltip<br>with more text<br><em>and custom formatting</em>'
+        });
+      }
+    }
+  }
+</script>

@@ -1,0 +1,64 @@
+<div class="card data-table data-table-collapsible data-table-init">
+  <div class="card-header">
+    <div class="data-table-title">Nutrition</div>
+    <div class="data-table-actions">
+      <a class="link icon-only">
+        <i class="icon f7-icons ios-only">sort</i>
+        <i class="icon material-icons md-only">sort</i>
+      </a>
+      <a class="link icon-only">
+        <i class="icon f7-icons ios-only">more_vertical_round</i>
+        <i class="icon material-icons md-only">more_vert</i>
+      </a>
+    </div>
+  </div>
+  <div class="card-content">
+    <table>
+      <thead>
+        <tr>
+          <th class="label-cell">Year</th>
+          <th class="label-cell">Month</th>
+        </tr>
+      </thead>
+      <tbody>
+	    function textBoxCreate(d) {
+
+			output = '';
+			for (ii = 0; ii < 24; ++ii) {
+				mes = textomes[d.getMonth()]
+
+				output += '<tr>
+					output += '<td class="label-cell">'
+					output += '			d.getFullYear() + '/' + (d.getMonth() + 1)'
+					output += '</td>'
+					output += '<td class="label-cell">'
+					output += '			mes + '/' + ii'
+					output += '</td>'
+					
+					d.setMonth(d.getMonth() + 1);
+					
+					output += '<td class="numeric-cell">'
+						output += '<input style="display: inline;font-size:8px;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="alq' + ii + '" placeholder="ALQS">'
+					output += '</td>'
+					output += '<td class="label-cell">
+						output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="ays' + ii + '" placeholder="AYSS">'
+					output += '</td>'
+					output += '<td class="numeric-cell">
+						output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="abl' + ii + '" placeholder="ABLS">'
+					output += '</td>'
+					output += '<td class="numeric-cell">
+						output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="hon' + ii + '" placeholder="HONS">'
+					output += '</td>'
+					output += '<td class="numeric-cell">
+						output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="imb' + ii + '" placeholder="IMBS">'
+					output += '</td>'
+					output += '<td class="numeric-cell">
+						output += '<input style="display: inline;width: 10 px;border: 1px solid #cfcfcf;" type="text" name="fix' + ii + '" placeholder="FIXS">'
+					output += '</td>'
+				output += '</tr>'
+			}
+		}
+      </tbody>
+    </table>
+  </div>
+</div>

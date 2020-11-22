@@ -1,0 +1,161 @@
+<template>
+
+<div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
+        </div>
+        <div class="title">PhotoBrowser</div>
+      </div>
+    </div>
+<div class="page-content">
+<div class="block-title">Light Theme</div>
+<div class="block row">
+<div class="col-33"><a class="button pb-standalone" href="#">Standalone</a></div>
+<div class="col-33"><a class="button pb-popup" href="#">Popup</a></div>
+<div class="col-33"><a class="button pb-page" href="#">Page</a></div>
+</div>
+<div class="block-title">Dark Theme</div>
+<div class="block row">
+<div class="col-50"><a class="button pb-standalone-dark" href="#">Standalone</a></div>
+<div class="col-50"><a class="button pb-popup-dark" href="#">Popup</a></div>
+</div>
+<div class="block"><a class="button pb-standalone-captions" href="#">With Captions</a></div>
+<div class="block"><a class="button pb-standalone-video" href="#">With Video</a></div>
+</div>
+</div>
+</template>
+
+<script>
+var pomo = ['./img/c.webp','./img/b.webp','./img/c.webp',]
+  return {
+      on: {
+	        pageInit: function(e, page) {
+        console.log('pageInit', page);
+	  
+      /*=== Default standalone ===*/
+      var myPhotoBrowserStandalone = app.photoBrowser.create({
+          photos : pomo
+      });
+      //Open photo browser on click
+      $$('.pb-standalone').on('click', function () {
+          myPhotoBrowserStandalone.open();
+      });
+      
+      /*=== Popup ===*/
+      var myPhotoBrowserPopup = app.photoBrowser.create({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          type: 'popup'
+      });
+      $$('.pb-popup').on('click', function () {
+          myPhotoBrowserPopup.open();
+      });
+      
+      /*=== As Page ===*/
+      var myPhotoBrowserPage = app.photoBrowser.create({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          type: 'page',
+          backLinkText: 'Back'
+      });
+      $$('.pb-page').on('click', function () {
+          myPhotoBrowserPage.open();
+      });
+      
+      /*=== Standalone Dark ===*/
+      var myPhotoBrowserDark = app.photoBrowser.create({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          theme: 'dark'
+      });
+      $$('.pb-standalone-dark').on('click', function () {
+          myPhotoBrowserDark.open();
+      });
+      
+      /*=== Popup Dark ===*/
+      var myPhotoBrowserPopupDark = app.photoBrowser.create({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          theme: 'dark',
+          type: 'popup'
+      });
+      $$('.pb-popup-dark').on('click', function () {
+          myPhotoBrowserPopupDark.open();
+      });
+      
+      /*=== With Captions ===*/
+      var myPhotoBrowserCaptions = app.photoBrowser.create({
+          photos : [
+		  
+              {
+                  url: './img/girl.jpg',
+                  caption: 'Caption 1 Text xxxxx'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/1/',
+                  caption: 'Caption 1 Text'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/2/',
+                  caption: 'Second Caption Text'
+              },
+              // This one without caption
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/3/',
+              },
+          ],
+          theme: 'dark',
+          type: 'standalone'
+      });
+      $$('.pb-standalone-captions').on('click', function () {
+          myPhotoBrowserCaptions.open();
+      });
+      
+      /*=== With Video ===*/
+      var myPhotoBrowserVideo = app.photoBrowser.create({
+          photos : [
+              {
+                  html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0" frameborder="0" allowfullscreen></iframe>',
+                  caption: 'Woodkid - Run Boy Run (Official HD Video)'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/2/',
+                  caption: 'Second Caption Text'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/2/',
+                  caption: 'Second Caption Text'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/3/',
+              },
+          ],
+          theme: 'dark',
+          type: 'standalone'
+      });
+      $$('.pb-standalone-video').on('click', function () {
+          myPhotoBrowserVideo.open();
+      });
+
+		}
+	}
+}
+
+</script>

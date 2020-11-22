@@ -1,0 +1,65 @@
+
+<template>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="title">SetState</div>
+      </div>
+    </div>
+    <div class="page-content">
+      {{#if user}}
+      <!-- Show user list when it is loaded -->
+			<button @click="newrec" class="col button button-fill">Add New</button>
+			<button @click="newrec1" class="col button button-fill">Add New1</button>
+
+      <div class="list simple-list">
+        <ul>
+          <li>First Name: {{user.firstName}}</li>
+          <li>Last Name: {{user.lastName}}</li>
+          <li>Age: {{user.age}}</li>
+        </ul>
+      </div>
+      {{else}}
+      <!-- Otherwise show preloader -->
+      <div class="block block-strong text-align-center">
+        <div class="preloader"></div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data() {
+      return {
+        // empty initial user data
+        user: {}
+      }
+    },
+		// Component Methods
+    methods: {
+      newrec: function() {
+					var self = this;					
+							var userx = {
+							firstName:'makerjoe',
+							lastName:'framework7',
+							age:'66'
+							}
+          self.$setState({
+            user : userx,
+          });
+      },
+      newrec1: function() {
+					var self = this;
+							var userx = {
+							firstName:'joseluis',
+							lastName:'hrydziuszko',
+							age:'65'
+							}
+          self.$setState({
+            user : userx,
+          });
+      },
+    },
+  };
+</script>

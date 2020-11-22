@@ -1,0 +1,139 @@
+<template>
+  <div class="page" data-name="formMD">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
+        </div>
+        <div class="title">FormV2 {{listado}}{{$app.version}}{{$root.user.lastName}}</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block-title">About My App F7 : {{$app.version}} {{listado}}</div>
+      <div class="block block-strong">
+        <div class="block">
+          <div class="row">
+            <button @click="signUp()" class="col button button-small button-fill">{{$root.user.firstName}}</button>
+            <button @click="$root.signUp1()" class="col button button-small button-fill">{{$root.user.lastName}}</button>
+            <button @click="$root.logIn()" class="col button button-fill">login</button>
+            <button @click="logOut" class="col button button-fill">logOut</button>
+            <button @click="getSession" class="col button button-fill">getSession</button>
+            <button @click="$root.getUser()" class="col button button-fill">getUser</button>
+            <button @click="putUser" class="col button button-fill">putUser</button>
+          </div>
+<br>
+          <div class="row">
+            <button @click="deleteUser" class="col button button-fill">deleteUser</button>
+            <button @click="changePassword" class="col button button-fill">changePassword</button>
+            <button @click="changeUsername" class="col button button-fill">changeUsername</button>
+            <button @click="signUpAdmin" class="col button button-fill">signUpAdmin</button>
+            <button @click="deleteAdmin" class="col button button-fill">deleteAdmin</button>
+            <button @click="$root.helloWorld()" class="col button button-fill">openhello</button>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</template>
+<style scoped>
+  .button {
+    margin-bottom: 1em;
+    text-transform: capitalize;
+  }
+</style>
+
+<script>
+  return {
+    // Component Data
+    data: function() {
+      // Must return an object
+      return {
+        vitems: [],
+        listado: 'Datos de Inquilino',
+      }
+    },
+    methods: {
+        signUp: function() {
+                dbx.signUp('batman', 'brucewayne', function (err, response) {
+                  if (err) {
+                    if (err.name === 'conflict') {
+                      // "batman" already exists, choose another username
+                    } else if (err.name === 'forbidden') {
+                      // invalid username
+                    } else {
+                         console.log(response)
+                    }
+                  }
+                });
+
+        },
+        logIn: function() {
+        },
+        logOut: function() {
+        },
+        getSession: function() {
+        },
+        getUser: function() {
+        },
+        putUser: function() {
+                dbx.putUser('robin', {
+                  metadata : {
+                    email : 'robin@boywonder.com',
+                    birthday : '1932-03-27T00:00:00.000Z',
+                    likes : ['acrobatics', 'short pants', 'sidekickin\''],
+                  }
+                }, function (err, response) {
+                         console.log('response')
+                         console.log('err')
+                });
+        },
+        deleteUser: function() {
+        },
+        changePassword: function() {
+        },
+        changeUsername: function() {
+        },
+        signUpAdmin: function() {
+        },
+        deleteAdmin: function() {
+        },
+    },
+    //////////////////////////////////////////////////////////////
+    /////////defined functions per page //////////////////////////
+    //////////////////////////////////////////////////////////////
+    on: {
+      pageInit: function(e, page) {
+        console.log('pageMounted', page.name);
+        var $$ = Dom7;
+
+        function sync() {
+
+            var opts = {
+              live: true,
+              retry: true
+            };
+            db.replicate.to(remoteCouch, opts, syncError);
+            db.replicate.from(remoteCouch, opts, syncError);
+          }
+          // There was some form or error syncing
+        function syncError() {
+          console.log('error')
+            //syncDom.setAttribute('data-sync-state', 'error');
+        }
+
+        if (remoteCouch) {
+          //sync();
+        }
+        // navbar link tooltip
+        var navbarTooltip = app.tooltip.create({
+          targetEl: '#bnw',
+          text: 'One more tooltip<br>with more text<br><em>and custom formatting</em>'
+        });
+      }
+    }
+
+  }
+</script>
