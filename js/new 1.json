@@ -1,0 +1,44 @@
+var inquilino = {
+"_id":1,
+"address":"",
+"first_name":"Clair",
+"last_name":"Stimson",
+"email":"cstimson0@seesaa.net",
+"gender":"Female",
+"ip_address":"129.251.46.64",
+"montos":{
+	"alq":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	"ays":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	"abl":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	"hon":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	"imb":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	"fix":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+}
+
+
+
+
+var obj = JSON.parse('
+{
+    "name": "com.phonegap.helloworld",
+    "version": "1.0.0",
+    "displayName": "appGAP",
+    "cordova": {
+        "platforms": [
+            "android"
+        ],
+        "plugins": {
+            "cordova-plugin-console": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-whitelist": {}
+        }
+    },
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-console": "~1.0.1",
+        "cordova-plugin-statusbar": "~1.0.1",
+        "cordova-plugin-whitelist": "~1.2.0"
+    }
+}
+');

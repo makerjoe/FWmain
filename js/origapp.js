@@ -9,7 +9,7 @@ Template7.registerHelper('json_stringify', function (context) {
 
 // Framework7 App main instance
 var app  = new Framework7({
-  version: '4.4.0',
+  version: '4.2.2',
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Framework7', // App name
@@ -26,54 +26,8 @@ var app  = new Framework7({
   // App root methods
   methods: {
     helloWorld: function () {
-      app.dialog.alert('Hellox World root!');
+      app.dialog.alert('Hello World root!');
     },
-    openlog: function () {
-      app.dialog.alert('Openlog');
-    },
-    signUp1: function() {
-        dbx.signUp('robin', 'brucewayne', function (err, response) {
-          if (err) {
-            if (err.name === 'conflict') {
-              // "batman" already exists, choose another username
-            } else if (err.name === 'forbidden') {
-              // invalid username
-            } else {
-                 console.log(response)
-            }
-          }
-        });
-    },
-    getUser: function() {
-      dbx.getUser('batman', function (err, response) {
-        if (err) {
-          if (err.name === 'not_found') {
-            // typo, or you don't have the privileges to see this user
-          } else {
-            // some other error
-          }
-        } else {
-          // response is the user object
-          console.log(response.name)
-        }
-      });
-    },
-        logIn: function() {
-
-    
-    dbx.logIn('batman', 'brucewayne', function (err, response) {
-      if (err) {
-        if (err.name === 'unauthorized' || err.name === 'forbidden') {
-        console.log('you have NOT been logged')
-        } else {
-          // cosmic rays, a meteor, etc.
-        }
-      }else {
-        console.log('you have been logged')
-      }
-    });
-           },
- 
   },
   // App routes
   routes: routes,
@@ -84,15 +38,7 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
-var ls = app.loginScreen.create({ el: '.login-screen' });
-ls.open(true);
-
-
-$$('.login-screen .button').on('click', function () {
-	app.views.create('.view-main', { url: '/' });
-  ls.close();
-});
-
+      
 // Login Screen-Modal DOM events
 $$('.login-screen').on('loginscreen:open', function (e, loginScreen) {
 	console.log('Login screen open')
@@ -107,8 +53,15 @@ $$('.login-screen').on('loginscreen:closed', function (e, loginScreen) {
 	console.log('Login screen closed')
 });
 
+			
+// var auth = false;
+// if (!auth) {
+    // mainView.router.loadPage('login.html')
+// }
+
+
 // Login Screen Demo
-$$('.login-screen .button').on('click', function () {
+$$('.login-screen .list-button').on('click', function () {
   var username = $$('.login-screen [name="username"]').val();
   var password = $$('.login-screen [name="password"]').val();
 
@@ -130,13 +83,8 @@ $$(document).on('page:init', '.page[data-name="about"]', function (e) {
 
 var searchkey='Pi';
 var output = '';
-
 var db = new PouchDB('alqs', {auto_compaction: true});         
-//var remoteCouch = 'http://admin:af5f2187037d@couchdb-99bd06.smileupps.com/alqs';
-var remoteCouch = 'https://couchdb-99bd06.smileupps.com/alqs';
-var dbx = new PouchDB('http://192.168.0.11:5984/mydb', {skip_setup: true});
-
-//var dbusers = new PouchDB('makerjoe:hryd3757@192.168.0.11:5984/mydb', {skip_setup: true});
+var remoteCouch = 'http://localhost:5984/alqs';
 //var remoteCouch = 'http://softhryd.sytes.net:5984/alqs';
 //var remoteCouch = 'https://makerjoe:hryd3757@bcecd732-c9c4-452a-b4a8-d9c02632a202-bluemix.cloudant.com/todos';
 //var remoteCouch = 'http://makerjoe:hryd3757@192.168.0.16:5984/todos';
@@ -144,7 +92,6 @@ var dbx = new PouchDB('http://192.168.0.11:5984/mydb', {skip_setup: true});
 //http://someuser:somepassword@path.to.couchdb.com:5984/somedatabase
 //https://bcecd732-c9c4-452a-b4a8-d9c02632a202-bluemix.cloudant.com
 //db.setMaxListeners(20); 
-//var local = new PouchDB('local_db');
 
 var textomes = new Array (12);
 textomes[0]="Ene";

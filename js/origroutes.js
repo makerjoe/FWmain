@@ -5,12 +5,8 @@ routes = [
 	// },
 	{	
 		path: '/',
-    url: './home.html',
-  },
-	{	
-		path: '/dbadm',
-    componentUrl: './pages/dbadm.html',
-  },
+    url: 'index.html',
+	},
   {
     path: '/menu/',
     componentUrl: './pages/menu.html',
