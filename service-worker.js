@@ -1,4 +1,4 @@
-var cacheName = 'FW7 PWA';
+var cacheName = 'FW7PWA';
 var filesToCache = [
   '/',
   '/index.html',
