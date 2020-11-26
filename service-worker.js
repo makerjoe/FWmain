@@ -1,14 +1,14 @@
 var cacheName = 'FW7PWA';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/framework7/css/framework7.bundle.css',
-  '/css/style.css',
-  '/js/main.js',
-  '/js/app.js',
-  '/pages/about.html',
-  '/pages/form.html',
-  '/framework7/js/framework7.bundle.js'
+  '/FWmain',
+  '/FWmain/index.html',
+  '/FWmain/framework7/css/framework7.bundle.css',
+  '/FWmain/css/style.css',
+  '/FWmain/js/main.js',
+  '/FWmain/js/app.js',
+  '/FWmain/pages/about.html',
+  '/FWmain/pages/form.html',
+  '/FWmain/framework7/js/framework7.bundle.js'
 
 ];
 
