@@ -3,7 +3,7 @@
   "short_name": "FW7PWA",
   "description": "FW PWA",
   "lang": "en-US",
-  "start_url": "/index.html",
+  "start_url": "/FWmain/index.html",
   "display": "standalone",
   "background_color": "#EE350F",
   "theme_color": "#EE350F",
